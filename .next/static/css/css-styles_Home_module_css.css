@@ -1,0 +1,115 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/next@14.2.0-canary.61_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/.pnpm/next@14.2.0-canary.61_react-dom@18.2.0_react@18.2.0/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./styles/Home.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Home_container__d256j {
+  display: flex;
+  height: 100vh;
+  max-width: 100%;
+  margin: auto;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.Home_main__VkIEL {
+  flex: 5;
+  display:flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.Home_sidebar__5uvgt {
+  flex: 1;
+  width: 300px;
+  background-color: #f0f0f0;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.Home_conversationItem__yfsbM {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.Home_conversationItem__yfsbM:hover {
+  background-color: #e9e9e9;
+}
+
+.Home_title__hYX6j {
+  font-size: 24px;
+  color: rgba(0,0,0,0.8);
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.Home_chatHistory__b4j6t {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.Home_userMessage__yHQQP, .Home_gptMessage__xs_QT {
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.Home_userMessage__yHQQP {
+  align-self: flex-end;
+  background-color: #dcf8c6;
+}
+
+.Home_gptMessage__xs_QT {
+  align-self: flex-start;
+  background-color: #ffffff;
+  border: 1px solid #eee;
+}
+
+.Home_chatBox__4s2CR {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  min-height: 50px;
+}
+
+.Home_inputField__h82W1 {
+  flex: 1;
+  flex-grow: 1;
+  padding: 10px 15px;
+  margin-right: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 18px;
+  outline: none;
+  min-width: 0;
+}
+
+.Home_sendButton__kNNkw {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex: 0 0 auto;
+  min-width: 100px;
+}
+
+.Home_sendButton__kNNkw:hover {
+  background-image: linear-gradient(45deg, gray, transparent);
+}
+
+.Home_form__FrVR9 {
+  display: flex;
+  width: 100%;
+}

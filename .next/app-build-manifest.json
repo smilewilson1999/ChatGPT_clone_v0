@@ -1,0 +1,16 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-styles_Home_module_css.css",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-app_globals_css-node_modules_pnpm_next_14_2_0-canary_61_react-dom_18_2_0_react_18_2_0_nod-a5f3de.css",
+      "static/chunks/app/layout.js"
+    ]
+  }
+}
