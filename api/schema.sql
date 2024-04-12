@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS conversation;
+
+CREATE TABLE conversation (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    last_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE message (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    conversation_id INTEGER NOT NULL,
+    text TEXT NOT NULL,
+    is_user BOOLEAN NOT NULL,
+    FOREIGN KEY (conversation_id) REFERENCES conversation(id)
+);
+
