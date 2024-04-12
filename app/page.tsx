@@ -24,22 +24,30 @@ export default function Page() {
   const [isSending, setIsSending] = useState(false);
   const latestMessageRef = useRef(null);
 
-  useEffect(() => {
-    const fetchConversations = async () => {
-      try {
-        const response = await fetch('/api/conversations');
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-        const data = await response.json();
-        setConversations(data);
-      } catch (error) {
-        console.error("Failed to fetch conversations", error);
+  const fetchConversations = async () => {
+    try {
+      const response = await fetch('/api/conversations');
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
       }
-    };
+      const data = await response.json();
+      setConversations(data);
+    } catch (error) {
+      console.error("Failed to fetch conversations", error);
+    }
+  };
 
-    fetchConversations();
+  // Get the session list when the component is loaded for the first time
+  useEffect(() => {
+      fetchConversations();
   }, []);
+
+  useEffect(() => {
+    // Check if it's the first message in the chat history
+    if (chatHistory.length === 1) {
+      fetchConversations();
+    }
+  }, [chatHistory.length]);
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -59,6 +67,19 @@ export default function Page() {
 
     fetchMessages();
   }, [selectedConversationId]);
+
+  const displayMessageGradually = (text: string, isUser: boolean, onComplete: () => void) => {
+    let displayText = '';
+    const intervalId = setInterval(() => {
+      if (displayText.length < text.length) {
+        displayText += text[displayText.length];
+        setChatHistory((prev) => [...prev.slice(0, -1), { message: displayText, isUser }]);
+      } else {
+        clearInterval(intervalId);
+        if (onComplete) onComplete();
+      }
+    }, 5);
+  };
 
   const sendMessage = async (e: FormEvent) => {
     
@@ -89,12 +110,15 @@ export default function Page() {
       const data = await response.json();
 
       setChatHistory((prev) => [...prev, { message: data.response, isUser: false }]);
+      displayMessageGradually(data.response, false, () => {
+        setIsSending(false); // Set to false when verbatim display is complete
+      });
+
       if (selectedConversationId === null) {
         setSelectedConversationId(data.conversation_id);
       }
     } catch (error) {
       console.error("Failed to send message", error);
-    } finally {
       setIsSending(false);
     }
   };
@@ -139,7 +163,9 @@ export default function Page() {
                   value={message} 
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)} 
                   placeholder="Message ChatGPT..." 
-                  className={styles.inputField} />
+                  className={styles.inputField}
+                  disabled={isSending}
+            />
             <Button type="submit" className={styles.sendButton} disabled={isSending}>
               {isSending ? 'Sending...' : 'Send'}
             </Button>
