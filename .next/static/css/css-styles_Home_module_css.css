@@ -20,64 +20,143 @@
 }
 
 .Home_sidebar__5uvgt {
-  flex: 1;
   width: 300px;
   background-color: #f0f0f0;
   overflow-y: auto;
   padding: 20px;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.Home_conversationItem__yfsbM {
+.Home_conversationItem__yfsbM, .Home_newConversationButton__VFBsQ {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgba(0, 0, 0, 0.8);
   padding: 10px;
   margin-bottom: 10px;
   background-color: #ffffff;
   cursor: pointer;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
 }
 
-.Home_conversationItem__yfsbM:hover {
+.Home_conversationItem__yfsbM, .Home_chatHistory__b4j6t {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+}
+
+.Home_conversationItem__yfsbM:hover, .Home_newConversationButton__VFBsQ:hover{
   background-color: #e9e9e9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.Home_newConversationIcon_GPT__huuQf {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 20px;
+  width: 25px;
+  height: 25px;
+}
+
+.Home_newConversationIcon_Post__8_oIk {
+  display: flex;
+  justify-content: flex-end;
+  width: 20px;
+  height: 20px;
 }
 
 .Home_title__hYX6j {
+  display: flex;
+  justify-content: center;
   font-size: 24px;
   color: rgba(0,0,0,0.8);
   text-align: center;
   padding: 20px;
   border-bottom: 1px solid #eee;
+  opacity: 0.2;
 }
 
 .Home_chatHistory__b4j6t {
-  flex: 1;
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
   overflow-y: auto;
   margin-bottom: 20px;
 }
 
-.Home_userMessage__yHQQP, .Home_gptMessage__xs_QT {
-  margin: 10px 0;
-  padding: 10px 15px;
-  border-radius: 18px;
-  max-width: 80%;
-  word-wrap: break-word;
+.Home_message__OKL2m {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0px;
 }
 
 .Home_userMessage__yHQQP {
-  align-self: flex-end;
-  background-color: #dcf8c6;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-right: 24px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  max-width: 60%;
 }
 
 .Home_gptMessage__xs_QT {
-  align-self: flex-start;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 24px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  max-width: 60%;
+}
+
+.Home_messageIconUser__rGCuC {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+.Home_messageIconGPT__We0OQ {
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+.Home_messageText__mnsJb {
+  padding: 10px 10px;
+  max-width: 100%;
+  border-radius: 18px;
+  word-wrap: break-word;
+  display: flex;
+}
+
+.Home_userMessage__yHQQP {
+  justify-content: flex-end;
+  background-color: #dcf8c6;
+  align-self: flex-end;
+}
+
+.Home_gptMessage__xs_QT {
+  justify-content: flex-start;
   background-color: #ffffff;
   border: 1px solid #eee;
+  align-self: flex-start;
 }
 
 .Home_chatBox__4s2CR {
   display: flex;
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   border-top: 1px solid #eee;
   min-height: 50px;
 }
@@ -88,13 +167,13 @@
   padding: 10px 15px;
   margin-right: 10px;
   font-size: 16px;
-  border: 1px solid #ddd;
   border-radius: 18px;
-  outline: none;
   min-width: 0;
 }
 
 .Home_sendButton__kNNkw {
+  position: relative;
+  width: 100px;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
@@ -111,5 +190,38 @@
 
 .Home_form__FrVR9 {
   display: flex;
+  top: 40%;
   width: 100%;
+  align-items: center;
+  position: relative;
 }
+
+.Home_stopButton__f6e_H {
+  position: absolute;
+  right: 11%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.Home_stopIcon__sPDPm {
+  width: 30px;
+  height: 30px;
+}
+
+.Home_deleteButton__o1Y2v {
+  margin-left: 10px;
+  padding: 5px 5px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.Home_deleteButton__o1Y2v:hover {
+  background-image: linear-gradient(45deg, gray, transparent);
+}
+
+
+

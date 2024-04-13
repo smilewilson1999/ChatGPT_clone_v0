@@ -32,6 +32,14 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+    
+    @app.route('/api/conversations/create', methods=['POST'])
+    def create_conversation():
+        db = get_db()
+        cursor = db.execute('INSERT INTO conversation (last_updated) VALUES (?)', (datetime.now(),))
+        new_conversation_id = cursor.lastrowid
+        db.commit()
+        return jsonify({'id': new_conversation_id, 'last_updated': datetime.now().isoformat()}), 201
 
     @app.route('/api/conversations', methods=['GET'])
     def list_conversations():
@@ -45,6 +53,15 @@ def create_app(test_config=None):
         messages = db.execute('SELECT text, is_user FROM message WHERE conversation_id = ? ORDER BY id', (conversation_id,)).fetchall()
         return jsonify([{'text': msg['text'], 'is_user': msg['is_user']} for msg in messages])
 
+    @app.route('/api/conversation/<int:conversation_id>', methods=['DELETE'])
+    def delete_conversation(conversation_id):
+        db = get_db()
+
+        db.execute('DELETE FROM message WHERE conversation_id = ?', (conversation_id,))
+        db.execute('DELETE FROM conversation WHERE id = ?', (conversation_id,))
+        db.commit()
+
+        return jsonify({'message': 'Conversation deleted successfully'}), 200
 
     @app.route('/api/message', methods=['POST'])
     def message():
